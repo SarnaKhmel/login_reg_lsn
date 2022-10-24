@@ -2,20 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./sign_in.css";
 
-function SignInHeader() {
+function ProfileHeader() {
   return (
     <div className="sign-in">
       <span>
-        <Link to="/login" className="sign">
-          LOGIN
-        </Link>
-        /
         <Link className="sign" to="/register">
-          REGISTER
+          PROFILE
         </Link>
       </span>
     </div>
   );
 }
 
-export default SignInHeader;
+export default ProfileHeader;

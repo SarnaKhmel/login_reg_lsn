@@ -15,13 +15,25 @@ function Register() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const { setTimeActive } = useAuthValue();
+  const beginWithoutDigit = /^\D.*$/;
+  // const withoutSpecialChars = /^[^-() /]*$/;
 
   const validatePassword = () => {
     let isValid = true;
     if (password !== "" && confirmPassword !== "") {
-      if (password !== confirmPassword) {
+      if (beginWithoutDigit.test(password)) {
+        setError("Password must have numbers");
         isValid = false;
-        setError("Passwords does not match");
+      } else {
+        if (password.length <= 8) {
+          setError("Password must be longer than 8 characters");
+          isValid = false;
+        } else {
+          if (password !== confirmPassword) {
+            isValid = false;
+            setError("Passwords does not match");
+          }
+        }
       }
     }
     return isValid;

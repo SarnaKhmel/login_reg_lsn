@@ -12,7 +12,7 @@ import PrivateRoute from "./PrivateRoute";
 import { Navigate } from "react-router-dom";
 import Main from "./Main";
 import SignInHeader from "./SignInHeader";
-import RegisteredHeader from "./RegisteredHeader";
+import ProfileHeader from "./ProfileHeader";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -38,7 +38,7 @@ function App() {
                 </>
               ) : (
                 <>
-                  <RegisteredHeader />
+                  <ProfileHeader />
                   <Main />
                 </>
               )
