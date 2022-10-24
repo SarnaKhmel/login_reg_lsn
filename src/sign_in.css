@@ -1,0 +1,15 @@
+.sign-in {
+  display: flex;
+  justify-content: flex-end;
+  padding: 5px;
+  width: 100vw;
+
+  background-color: darkgrey;
+  font-size: 18px;
+  font-weight: bold;
+  color: aliceblue;
+}
+
+.sign {
+  color: white;
+}
