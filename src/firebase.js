@@ -1,19 +1,21 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyALTyHLoURb6eh0K5XWm9-sJTcFIq3LUwY",
-  authDomain: "adry-ec8fd.firebaseapp.com",
-  projectId: "adry-ec8fd",
-  storageBucket: "adry-ec8fd.appspot.com",
-  messagingSenderId: "861290331227",
-  appId: "1:861290331227:web:34f8da4c71e256cb60d37e",
-  measurementId: "G-6CG2VNF24H",
+  apiKey: "AIzaSyCAkEhTm1Qeo4-HwFhHlRu5GhOWmJdoqUE",
+  authDomain: "newandry-eb4f9.firebaseapp.com",
+  projectId: "newandry-eb4f9",
+  storageBucket: "newandry-eb4f9.appspot.com",
+  messagingSenderId: "802016351126",
+  appId: "1:802016351126:web:e7fb647604e9940bdd03b7",
+  measurementId: "G-C5DNBEF4HM",
 };
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
+const provider = new GoogleAuthProvider();
 
-export { auth };
+export { auth, db, provider };

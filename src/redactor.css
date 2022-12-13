@@ -1,0 +1,50 @@
+.redactor {
+  border: 1px solid blue;
+  width: 100%;
+  height: calc(100vh - 25px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  width: 500px;
+  height: auto;
+  padding: 20px;
+  background-color: lightgrey;
+  border-radius: 15px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.container h1 {
+  text-align: center;
+}
+
+.container label {
+  font-size: 25px;
+}
+
+.container .input {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input input {
+  height: 40px;
+}
+
+.input textarea {
+  height: 150px;
+}
+
+.container button {
+  margin-top: 20px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 30px;
+}

@@ -5,11 +5,12 @@ import {
   signInWithEmailAndPassword,
   sendEmailVerification,
 } from "firebase/auth";
-import { auth } from "./firebase";
+import { auth, provider } from "./firebase";
 import { useNavigate } from "react-router-dom";
 import { useAuthValue } from "./AuthContext";
+import { signInWithPopup } from "firebase/auth";
 
-function Login() {
+function Login({ setIsAuth }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -24,7 +25,8 @@ function Login() {
           sendEmailVerification(auth.currentUser)
             .then(() => {
               setTimeActive(true);
-              navigate("/verify-email");
+              setIsAuth(true);
+              navigate("/profile");
             })
             .catch((err) => alert(err.message));
         } else {
@@ -32,6 +34,14 @@ function Login() {
         }
       })
       .catch((err) => setError(err.message));
+  };
+
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, provider).then((result) => {
+      localStorage.setItem("isAuth", true);
+      setIsAuth(true);
+      navigate("/profile");
+    });
   };
 
   return (
@@ -62,6 +72,12 @@ function Login() {
           Don't have and account?
           <Link to="/register">Create one here</Link>
         </p>
+      </div>
+      <div className="auth">
+        <p>Sign in with Google</p>
+        <button className="login-with-google" onClick={signInWithGoogle}>
+          Sign in with Google
+        </button>
       </div>
     </div>
   );

@@ -13,10 +13,13 @@ import { Navigate } from "react-router-dom";
 import Main from "./Main";
 import SignInHeader from "./SignInHeader";
 import ProfileHeader from "./ProfileHeader";
+import Redactor from "./Redactor";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [timeActive, setTimeActive] = useState(false);
+
+  const [isAuth, setAuth] = useState(localStorage.getItem("isAuth"));
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -53,13 +56,14 @@ function App() {
               </PrivateRoute>
             }
           />
+          <Route path="/redactor" element={<Redactor />} />
           <Route
             path="/login"
             element={
               !currentUser?.emailVerified ? (
                 <Login />
               ) : (
-                <Navigate to="/profile" replace />
+                <Navigate to="/profile" />
               )
             }
           />
@@ -69,7 +73,7 @@ function App() {
               !currentUser?.emailVerified ? (
                 <Register />
               ) : (
-                <Navigate to="/profile" replace />
+                <Navigate to="/profile" />
               )
             }
           />
